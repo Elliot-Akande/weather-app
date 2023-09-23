@@ -6,15 +6,461 @@
   </head>
   <body>
     <main>
-      <form>
-        <input
-          type="text"
-          placeholder="Enter a town, city or UK postcode"
-          id="location"
-          title="Location"
-        />
-        <button class="submit">Submit</button>
-      </form>
+      <nav>
+        <div class="logo">Weather</div>
+        <form>
+          <input
+            type="text"
+            placeholder="Enter a town, city or UK postcode"
+            id="location"
+            title="Location"
+          />
+          <button class="submit">Submit</button>
+        </form>
+        <div>
+          <button>&deg;C</button>
+          <button>&deg;F</button>
+        </div>
+      </nav>
+      <div>
+        <h1 class="location"></h1>
+        <h4 class="date"></h4>
+      </div>
+      <div>
+        <div>
+          <div>
+            <div class="main-icon"></div>
+            <div class="main-temp"></div>
+          </div>
+          <h3 class="weather-desc"></h3>
+          <h4 class="feels-like"></h4>
+          <h4 class="wind-desc"></h4>
+        </div>
+        <div>
+          <div>
+            <h5>Wind</h5>
+            <div class="wind-today"></div>
+          </div>
+          <div>
+            <h5>Humidity</h5>
+            <div class="humidity"></div>
+          </div>
+          <div>
+            <h5>UV index</h5>
+            <div class="uv"></div>
+          </div>
+          <div>
+            <h5>Visibility</h5>
+            <div class="visibility"></div>
+          </div>
+          <div>
+            <h5>Cloudiness</h5>
+            <div class="cloudiness"></div>
+          </div>
+          <div>
+            <h5>Chance of rain</h5>
+            <div class="rain-chance"></div>
+          </div>
+          <div>
+            <h5>Sunrise</h5>
+            <div class="sunrise"></div>
+          </div>
+          <div>
+            <h5>Sunset</h5>
+            <div class="sunset"></div>
+          </div>
+          <div>
+            <h5 class="moon-phase"></h5>
+            <div class="moon-icon"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div data-hour="0">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="1">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="2">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="3">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="4">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="5">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="6">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="7">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="8">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="9">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="10">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="11">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="12">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="13">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="14">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="15">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="16">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="17">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="18">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="19">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="20">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="21">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="22">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+        <div data-hour="23">
+          <div class="time"></div>
+          <div class="hour-icon"></div>
+          <div class="hour-temp"></div>
+          <div>
+            <div class="hour-desc"></div>
+            <hour-feels></hour-feels>
+          </div>
+          <div>
+            <div class="hour-wind-icon"></div>
+            <div>
+              <div class="hour-wind-dir"></div>
+              <div class="hour-wind"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   </body>
 </html>
