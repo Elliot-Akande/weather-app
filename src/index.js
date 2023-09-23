@@ -101,6 +101,33 @@ const domController = (() => {
     document.querySelector(".date").textContent = date;
   };
 
+  const updateCurrent = (data) => {
+    const temp = isCelsius ? data.tempC : data.tempF;
+    const feelsLike = `Feels like ${
+      isCelsius ? `${data.feelsLikeC}°C` : `${data.feelsLikeF}°F`
+    }`;
+
+    // Left Section
+    document.querySelector(".main-temp").textContent = temp;
+    document.querySelector(".weather-desc").textContent = data.condition.text;
+    document.querySelector(".feels-like").textContent = feelsLike;
+    document.querySelector(".wind-desc").textContent = getWeatherDesc(
+      data.windSpeed
+    );
+
+    // Right Section
+    document.querySelector(".wind-today").textContent = `${data.windSpeed}mph`;
+    document.querySelector(".humidity").textContent = `${data.humidity}%`;
+    document.querySelector(".uv").textContent = data.uv;
+    document.querySelector(
+      ".visibility"
+    ).textContent = `${data.visibility} mi.`;
+    document.querySelector(".cloudiness").textContent = `${data.cloud}%`;
+    document.querySelector(".rain-chance").textContent = `${data.rainChance}%`;
+    document.querySelector(".sunrise").textContent = convertTime(data.sunrise);
+    document.querySelector(".sunset").textContent = convertTime(data.sunset);
+    document.querySelector(".moon-phase").textContent = data.moon;
+  };
 
   const updateHourly = () => {};
 
@@ -108,6 +135,7 @@ const domController = (() => {
     console.log(data);
 
     updateHeader(data);
+    updateCurrent(data);
   };
 
   return {
