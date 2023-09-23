@@ -26,7 +26,11 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        test: /\.svg$/,
+        use: "svg-inline-loader",
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2|png|jpg|gif)$/i,
         type: "asset",
       },
 
