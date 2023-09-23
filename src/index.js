@@ -49,7 +49,8 @@ const getWeatherData = async (locationVal) => {
     uv: current.uv,
     visibility: current.vis_miles,
     cloud: current.cloud,
-    rainChance: forecast.forecastday[0].day.daily_chance_of_rain,
+    // One decimal place
+    precip: Math.round(current.precip_mm * 10) / 10,
     sunrise: forecast.forecastday[0].astro.sunrise,
     sunset: forecast.forecastday[0].astro.sunset,
     moon: forecast.forecastday[0].astro.moon_phase,
