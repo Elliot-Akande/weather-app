@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import convertTime from "convert-time";
+import svg from "svg";
 
 const locationInput = document.querySelector("#location");
 const submitBtn = document.querySelector(".submit");
