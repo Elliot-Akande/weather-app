@@ -34,15 +34,15 @@ const getWeatherData = async (locationVal) => {
   const data = {
     location: location.name,
     country: location.country,
-    time: location.localtime,
+    date: location.localtime,
 
-    tempC: current.temp_c,
-    tempF: current.temp_f,
-    feelsLikeC: current.feelslike_c,
-    feelsLikeF: current.feelslike_f,
+    tempC: Math.floor(current.temp_c),
+    tempF: Math.floor(current.temp_f),
+    feelsLikeC: Math.floor(current.feelslike_c),
+    feelsLikeF: Math.floor(current.feelslike_f),
 
     condition: current.condition,
-    windSpeed: current.gust_mph,
+    windSpeed: Math.floor(current.gust_mph),
     windDir: current.wind_degree,
     humidity: current.humidity,
     uv: current.uv,
@@ -53,23 +53,21 @@ const getWeatherData = async (locationVal) => {
     sunset: forecast.forecastday[0].astro.sunset,
     moon: forecast.forecastday[0].astro.moon_phase,
 
-    hour: forecast.forecastday[0].hour.map((item, index) => {
+    hour: forecast.forecastday[0].hour.map((item) => {
       const hourData = {
-        tempC: item.temp_c,
-        tempF: item.temp_f,
-        feelsLikeC: item.feelslike_c,
-        feelsLikeF: item.feelslike_f,
+        tempC: Math.floor(item.temp_c),
+        tempF: Math.floor(item.temp_f),
+        feelsLikeC: Math.floor(item.feelslike_c),
+        feelsLikeF: Math.floor(item.feelslike_f),
 
         time: item.time,
         condition: item.condition,
-        windSpeed: item.gust_mph,
+        windSpeed: Math.floor(item.gust_mph),
         windDir: item.wind_degree,
       };
       return hourData;
     }),
   };
-
-  console.log(data);
 
   return data;
 };
