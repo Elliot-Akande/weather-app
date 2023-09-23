@@ -93,6 +93,12 @@ const domController = (() => {
     return "Hurricane";
   };
 
+  const updateMoonIcon = async (moonPhase) => {
+    const icon = await import(`./${moonPhase}.svg`);
+    document.querySelector(".moon-icon").textContent = "";
+    document.querySelector(".moon-icon").appendChild(svg(icon.default));
+  };
+
   const updateHeader = (data) => {
     const location = `${data.location}, ${data.country}`;
     const date = format(new Date(data.date), "eeee dd MMMM u | HH:mm");
