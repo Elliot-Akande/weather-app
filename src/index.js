@@ -72,11 +72,26 @@ const getWeatherData = async (locationVal) => {
   return data;
 };
 
+const domController = (() => {
+  const isCelsius = true;
+
+
+
+
+
+  const render = (data) => {
+  };
+
+  return {
+    render,
+  };
+})();
+
 const submitPressed = async (event) => {
   event.preventDefault();
 
   const locationVal = locationInput.value;
-  getWeatherData(locationVal);
+  getWeatherData(locationVal).then(domController.render);
 };
 
 submitBtn.addEventListener("click", submitPressed);
