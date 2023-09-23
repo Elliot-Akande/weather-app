@@ -5,23 +5,24 @@
     <title>Weather App</title>
   </head>
   <body>
-    <main>
-      <nav>
-        <div class="logo">Weather</div>
-        <form>
-          <input
-            type="text"
-            placeholder="Enter a town, city or UK postcode"
-            id="location"
-            title="Location"
-          />
-          <button class="submit">Submit</button>
-        </form>
-        <div>
-          <button>&deg;C</button>
-          <button>&deg;F</button>
-        </div>
-      </nav>
+    <nav>
+      <div class="logo">Weather</div>
+      <form>
+        <input
+          type="text"
+          placeholder="Enter a town, city or UK postcode"
+          id="location"
+          title="Location"
+        />
+        <button class="submit">Submit</button>
+      </form>
+      <div>
+        <button>&deg;C</button>
+        <button>&deg;F</button>
+      </div>
+    </nav>
+    <div class="error"></div>
+    <div class="weather">
       <div>
         <h1 class="location"></h1>
         <h4 class="date"></h4>
@@ -461,6 +462,6 @@
           </div>
         </div>
       </div>
-    </main>
+    </div>
   </body>
 </html>
