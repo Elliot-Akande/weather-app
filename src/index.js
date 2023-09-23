@@ -76,10 +76,21 @@ const domController = (() => {
   const isCelsius = true;
 
 
+  const updateHeader = (data) => {
+    const location = `${data.location}, ${data.country}`;
+    const date = format(new Date(data.date), "eeee dd MMMM u | HH:mm");
+
+    document.querySelector(".location").textContent = location;
+    document.querySelector(".date").textContent = date;
+  };
 
 
+  const updateHourly = () => {};
 
   const render = (data) => {
+    console.log(data);
+
+    updateHeader(data);
   };
 
   return {
