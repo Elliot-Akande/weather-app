@@ -135,6 +135,7 @@ const domController = (() => {
     document.querySelector(".sunrise").textContent = convertTime(data.sunrise);
     document.querySelector(".sunset").textContent = convertTime(data.sunset);
     document.querySelector(".moon-phase").textContent = data.moon;
+    updateMoonIcon(data.moon);
   };
 
   const updateHour = (data, hour) => {
