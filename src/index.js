@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 const locationInput = document.querySelector("#location");
 const submitBtn = document.querySelector(".submit");
 
