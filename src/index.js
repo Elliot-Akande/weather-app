@@ -129,13 +129,29 @@ const domController = (() => {
     document.querySelector(".moon-phase").textContent = data.moon;
   };
 
-  const updateHourly = () => {};
+  const updateHour = (data, hour) => {
+    const container = document.querySelector(`[data-hour='${hour}']`);
+    const time = format(new Date(data.time), "HH:mm");
+    const temp = isCelsius ? `${data.tempC}°C` : `${data.tempF}°F`;
+    const feelsLike = `Feels like ${
+      isCelsius ? `${data.feelsLikeC}°C` : `${data.feelsLikeF}°F`
+    }`;
+    const wind = `${data.windSpeed}mph`;
+
+    container.querySelector(".time").textContent = time;
+    container.querySelector(".hour-icon").src = data.condition.icon;
+    container.querySelector(".hour-temp").textContent = temp;
+    container.querySelector(".hour-desc").textContent = data.condition.text;
+    container.querySelector(".hour-feels").textContent = feelsLike;
+    container.querySelector(".hour-wind").textContent = wind;
+  };
 
   const render = (data) => {
     console.log(data);
 
     updateHeader(data);
     updateCurrent(data);
+    data.hour.forEach(updateHour);
   };
 
   return {
