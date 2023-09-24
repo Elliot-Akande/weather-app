@@ -1,0 +1,328 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+:root {
+  --colour-white-primary: #fff;
+  --colour-white-secondary: #bae6fd;
+
+  --colour-black: #0c4a6e;
+
+  --colour-warn-green: hsl(101, 47%, 54%);
+  --colour-warn-yellow: hsl(42, 88%, 65%);
+  --colour-warn-orange: hsl(33, 88%, 52%);
+  --colour-warn-red: hsl(13, 77%, 49%);
+}
+
+/* Utility classes */
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-m {
+  gap: 30px;
+}
+
+.pad-b-xxs {
+  padding-bottom: 2px;
+}
+
+.pad-b-xs {
+  padding-bottom: 4px;
+}
+
+.pad-b-s {
+  padding-bottom: 20px;
+}
+
+.pad-b-m {
+  padding-bottom: 40px;
+}
+
+.pad-b-l {
+  padding-bottom: 50px;
+}
+
+.pad-l-m {
+  padding-left: 14px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* General styles */
+
+* {
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+  color: var(--colour-white-primary);
+  margin: 0;
+  padding: 0;
+
+  transition: border 100ms;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(#38bdf8, #075985);
+  padding: 26px 30px;
+}
+
+h4,
+h5 {
+  color: var(--colour-white-secondary);
+}
+
+h1 {
+  font-size: 42px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+h5 {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+h6 {
+  font-size: 16px;
+  font-weight: normal;
+  color: var(--colour-white-secondary);
+}
+
+svg {
+  fill: var(--colour-white-primary);
+}
+
+/* Nav Section */
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 32px;
+}
+
+.logo > svg {
+  height: 50px;
+  width: 50px;
+  margin-right: 6px;
+  transform: rotate(20deg);
+}
+
+.logo-text > div:nth-child(2) {
+  /* font-weight: normal; */
+  text-align: right;
+  color: var(--colour-white-secondary);
+  font-size: 20px;
+  margin-top: -6px;
+}
+
+nav input,
+nav button {
+  height: 36px;
+}
+
+nav > form {
+  padding-left: 16px;
+  padding-right: 12px;
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  background: var(--colour-black);
+  border: 2px solid var(--colour-black);
+  border-radius: 24px;
+}
+
+nav > form:focus-within {
+  border: 2px solid var(--colour-white-primary);
+}
+
+nav > form > input {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+nav > form > button {
+  height: 34px;
+  width: 34px;
+  background: none;
+  border: none;
+}
+
+nav > form > button > svg {
+  height: 26px;
+  width: 26px;
+  margin-bottom: -2px;
+}
+
+#location {
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.buttons > * {
+  background: var(--colour-black);
+  border: 2px solid var(--colour-black);
+  border-radius: 24px;
+  font-weight: 600;
+  padding: 0 20px;
+  margin-left: 8px;
+  font-size: 16px;
+}
+
+.buttons > *.active,
+.buttons > *:hover {
+  border: 2px solid var(--colour-white-primary);
+}
+
+/* Main Section */
+
+.weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 44px;
+}
+
+.main-icon {
+  height: 77px;
+  width: 77px;
+}
+
+.main-temp {
+  font-weight: 600;
+  font-size: 64px;
+  padding-left: 10px;
+}
+
+.current-details {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  column-gap: 50px;
+  row-gap: 26px;
+}
+
+.current-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+}
+
+.wind-today {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.wind-today > svg {
+  width: 30px;
+}
+
+.uv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+  width: 34px;
+  border-radius: 20px;
+}
+
+.moon-icon > svg {
+  fill: var(--colour-white-primary);
+  height: 36px;
+}
+
+.hourly-container {
+  background: #00000065;
+  padding: 30px 20px 10px;
+  border-radius: 20px;
+  margin-bottom: 60px;
+}
+
+.hourly-container > div:not(:last-child) {
+  border-bottom: 2px solid var(--colour-white-secondary);
+}
+
+.hourly-container > div {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 3px 0;
+  padding-right: 20px;
+}
+
+.time,
+.hour-temp,
+.hour-desc {
+  font-weight: 600;
+}
+
+.time {
+  width: 50px;
+}
+
+.hour-temp {
+  font-size: 20px;
+}
+
+.hour-desc {
+  width: 160px;
+}
+
+.hour-feels {
+  color: var(--colour-white-secondary);
+}
+
+.hour-icon > img {
+  width: 60px;
+}
+
+.hour-wind-container {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.hour-wind {
+  color: var(--colour-white-secondary);
+}
+
+.hour-wind-desc {
+  font-weight: 600;
+}
+
+.hour-wind-icon {
+  width: 32px;
+}

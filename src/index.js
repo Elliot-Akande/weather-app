@@ -2,6 +2,7 @@ import "./style.css";
 import { format } from "date-fns";
 import svg from "svg";
 import convertTime from "convert-time";
+import windDirIcon from "./Wind Direction.svg";
 import DataController from "./DataController";
 
 const locationInput = document.querySelector("#location");
@@ -9,30 +10,6 @@ const submitBtn = document.querySelector(".submit");
 const tempBtns = document.querySelectorAll('[class^="temp"]');
 let isCelsius = true;
 let currentData;
-
-const getWeatherDesc = (speed) => {
-  // Beaufort Wind Scale
-  // Source: https://www.weather.gov/mfl/beaufort
-  if (speed < 1) return "Calm";
-  if (speed < 4) return "Light air";
-  if (speed < 8) return "Light breeze";
-  if (speed < 13) return "Gentle breeze";
-  if (speed < 19) return "Moderate breeze";
-  if (speed < 25) return "Fresh breeze";
-  if (speed < 32) return "Strong breeze";
-  if (speed < 39) return "Moderate wind";
-  if (speed < 47) return "Gale";
-  if (speed < 55) return "Strong gale";
-  if (speed < 64) return "Storm";
-  if (speed < 73) return "Violent storm";
-  return "Hurricane";
-};
-
-const updateMoonIcon = async (moonPhase) => {
-  const icon = await import(`./${moonPhase}.svg`);
-  document.querySelector(".moon-icon").textContent = "";
-  document.querySelector(".moon-icon").appendChild(svg(icon.default));
-};
 
 const updateHeader = (data) => {
   const location = `${data.location}, ${data.country}`;
@@ -47,44 +24,60 @@ const updateCurrent = (data) => {
   const feelsLike = `Feels like ${
     isCelsius ? `${data.feelsLikeC}°C` : `${data.feelsLikeF}°F`
   }`;
+  const windIcon = svg(windDirIcon);
+  windIcon.style.transform = `rotate(${(data.windDir + 180) % 360}deg)`;
+  const uvColour = (() => {
+    if (data.uv < 3) return "var(--colour-warn-green)";
+    if (data.uv < 6) return "var(--colour-warn-yellow)";
+    if (data.uv < 8) return "var(--colour-warn-orange)";
+    return "var(--colour-warn-red)";
+  })();
 
   // Left Section
   document.querySelector(".main-icon").src = data.condition.icon;
   document.querySelector(".main-temp").textContent = temp;
   document.querySelector(".weather-desc").textContent = data.condition.text;
   document.querySelector(".feels-like").textContent = feelsLike;
-  document.querySelector(".wind-desc").textContent = getWeatherDesc(
-    data.windSpeed
-  );
+  document.querySelector(".wind-desc").textContent = data.windDesc;
 
   // Right Section
   document.querySelector(".wind-today").textContent = `${data.windSpeed} mph`;
+  document.querySelector(".wind-today").prepend(windIcon);
   document.querySelector(".humidity").textContent = `${data.humidity}%`;
   document.querySelector(".uv").textContent = data.uv;
+  document.querySelector(".uv").style.background = uvColour;
   document.querySelector(".visibility").textContent = `${data.visibility} mi.`;
   document.querySelector(".cloudiness").textContent = `${data.cloud}%`;
   document.querySelector(".precipitation").textContent = `${data.precip} mm`;
   document.querySelector(".sunrise").textContent = convertTime(data.sunrise);
   document.querySelector(".sunset").textContent = convertTime(data.sunset);
-  document.querySelector(".moon-phase").textContent = data.moon;
-  updateMoonIcon(data.moon);
+  document.querySelector(".moon-icon").textContent = "";
+  document.querySelector(".moon-icon").title = data.moon;
+  import(`./${data.moon}.svg`).then((icon) => {
+    document.querySelector(".moon-icon").appendChild(svg(icon.default));
+  });
 };
 
 const updateHour = (data, hour) => {
   const container = document.querySelector(`[data-hour='${hour}']`);
   const time = format(new Date(data.time), "HH:mm");
-  const temp = isCelsius ? `${data.tempC}°C` : `${data.tempF}°F`;
+  const temp = isCelsius ? `${data.tempC}°` : `${data.tempF}°`;
   const feelsLike = `Feels like ${
-    isCelsius ? `${data.feelsLikeC}°C` : `${data.feelsLikeF}°F`
+    isCelsius ? `${data.feelsLikeC}°` : `${data.feelsLikeF}°`
   }`;
-  const wind = `${data.windSpeed}mph`;
+  const wind = `${data.windSpeed} mph`;
+  const windIcon = svg(windDirIcon);
+  windIcon.style.transform = `rotate(${(data.windDir + 180) % 360}deg)`;
 
   container.querySelector(".time").textContent = time;
-  container.querySelector(".hour-icon").src = data.condition.icon;
+  container.querySelector(".hour-icon>img").src = data.condition.icon;
   container.querySelector(".hour-temp").textContent = temp;
   container.querySelector(".hour-desc").textContent = data.condition.text;
   container.querySelector(".hour-feels").textContent = feelsLike;
   container.querySelector(".hour-wind").textContent = wind;
+  container.querySelector(".hour-wind-desc").textContent = data.windDesc;
+  container.querySelector(".hour-wind-icon").textContent = "";
+  container.querySelector(".hour-wind-icon").appendChild(windIcon);
 };
 
 const render = (data = currentData) => {
@@ -110,3 +103,5 @@ submitBtn.addEventListener("click", async (event) => {
   const locationVal = locationInput.value;
   DataController.getData(locationVal).then(render);
 });
+
+DataController.getData("saltcoats").then(render);
