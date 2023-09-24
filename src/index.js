@@ -104,4 +104,4 @@ submitBtn.addEventListener("click", async (event) => {
   DataController.getData(locationVal).then(render);
 });
 
-DataController.getData("saltcoats").then(render);
+DataController.getData("Glasgow").then(render);
