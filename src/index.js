@@ -75,7 +75,8 @@ const getWeatherData = async (locationVal) => {
 };
 
 const domController = (() => {
-  const isCelsius = true;
+  let isCelsius = true;
+  let currentData;
 
   const getWeatherDesc = (speed) => {
     // Beaufort Wind Scale
@@ -156,7 +157,8 @@ const domController = (() => {
     container.querySelector(".hour-wind").textContent = wind;
   };
 
-  const render = (data) => {
+  const render = (data = currentData) => {
+    if (data !== currentData) currentData = data;
     updateHeader(data);
     updateCurrent(data);
     data.hour.forEach(updateHour);
