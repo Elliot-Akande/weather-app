@@ -75,6 +75,7 @@ const getWeatherData = async (locationVal) => {
 };
 
 const domController = (() => {
+  const tempButtons = document.querySelectorAll('[class^="temp"]');
   let isCelsius = true;
   let currentData;
 
@@ -163,6 +164,17 @@ const domController = (() => {
     updateCurrent(data);
     data.hour.forEach(updateHour);
   };
+
+  tempButtons.forEach((item) =>
+    item.addEventListener("click", (event) => {
+      const wasCelsius = isCelsius;
+      isCelsius = event.currentTarget.classList.contains("temp-c");
+      if (wasCelsius !== isCelsius) {
+        tempButtons.forEach((elem) => elem.classList.toggle("active"));
+        render();
+      }
+    })
+  );
 
   return {
     render,
