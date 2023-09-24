@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import svg from "svg";
 import convertTime from "convert-time";
 import windDirIcon from "./Wind Direction.svg";
+import loadingIcon from "./Spinner.svg";
 import DataController from "./DataController";
 
 const locationInput = document.querySelector("#location");
@@ -98,10 +99,24 @@ tempBtns.forEach((item) =>
   })
 );
 
+const getData = (locationValue) => {
+  const loadingDiv = document.createElement("div");
+  loadingDiv.classList.add("loading-container");
+  const loading = svg(loadingIcon);
+  loadingDiv.appendChild(loading);
+  document.querySelector("body").appendChild(loadingDiv);
+
+  DataController.getData(locationValue).then((data) => {
+    render(data);
+    loadingDiv.remove();
+    document.querySelector(".weather").classList.toggle("hidden");
+  });
+};
+
 submitBtn.addEventListener("click", async (event) => {
   event.preventDefault();
-  const locationVal = locationInput.value;
-  DataController.getData(locationVal).then(render);
+  document.querySelector(".weather").classList.toggle("hidden");
+  getData(locationInput.value);
 });
 
-DataController.getData("Glasgow").then(render);
+getData("Glasgow");
