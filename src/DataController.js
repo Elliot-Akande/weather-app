@@ -23,6 +23,24 @@ const DataController = (() => {
     }
   };
 
+  const getWeatherDesc = (speed) => {
+    // Beaufort Wind Scale
+    // Source: https://www.weather.gov/mfl/beaufort
+    if (speed < 1) return "Calm";
+    if (speed < 4) return "Light air";
+    if (speed < 8) return "Light breeze";
+    if (speed < 13) return "Gentle breeze";
+    if (speed < 19) return "Moderate breeze";
+    if (speed < 25) return "Fresh breeze";
+    if (speed < 32) return "Strong breeze";
+    if (speed < 39) return "Moderate wind";
+    if (speed < 47) return "Gale";
+    if (speed < 55) return "Strong gale";
+    if (speed < 64) return "Storm";
+    if (speed < 73) return "Violent storm";
+    return "Hurricane";
+  };
+
   const getData = async (locationVal) => {
     const { location, current, forecast } = await fetchData(locationVal);
 
@@ -38,6 +56,7 @@ const DataController = (() => {
 
       condition: current.condition,
       windSpeed: Math.floor(current.gust_mph),
+      windDesc: getWeatherDesc(current.gust_mph),
       windDir: current.wind_degree,
       humidity: current.humidity,
       uv: current.uv,
@@ -59,6 +78,7 @@ const DataController = (() => {
           time: item.time,
           condition: item.condition,
           windSpeed: Math.floor(item.gust_mph),
+          windDesc: getWeatherDesc(item.gust_mph),
           windDir: item.wind_degree,
         };
         return hourData;
