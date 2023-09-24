@@ -1,3 +1,4 @@
+import "./style.css";
 import { format } from "date-fns";
 import svg from "svg";
 import convertTime from "convert-time";
