@@ -353,7 +353,8 @@ nav > form > button > svg {
 .error > div {
   padding: 8px 16px;
 
-  border-radius: 20px;
+  border-radius: 30px;
   background: var(--colour-black);
+  font-size: 20px;
   font-weight: 600;
 }
