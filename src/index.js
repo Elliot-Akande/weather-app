@@ -151,6 +151,29 @@ document.querySelector(".submit").addEventListener("click", async (event) => {
   }
 });
 
+document.querySelector("#location").addEventListener("input", (event) => {
+  const input = event.currentTarget.value;
+  if (input.length > 2) {
+    DataController.autoComplete(input).then((data) => {
+      const autocompleteDiv = document.querySelector(".autocomplete");
+      autocompleteDiv.classList.remove("hidden");
+
+      data.forEach((item) => {
+        const container = document.createElement("div");
+        const name = document.createElement("div");
+        const region = document.createElement("div");
+
+        name.textContent = item.name;
+        region.textContent = item.region;
+
+        container.appendChild(name);
+        container.appendChild(region);
+        autocompleteDiv.appendChild(container);
+      });
+    });
+  }
+});
+
 navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
   state === "granted" ? getDataWithGPS() : getData("Glasgow");
 });
