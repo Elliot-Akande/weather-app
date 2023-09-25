@@ -164,6 +164,8 @@ document.querySelector("#location").addEventListener("input", (event) => {
         const name = document.createElement("div");
         const region = document.createElement("div");
 
+        name.classList.add("name");
+        region.classList.add("region");
         name.textContent = item.name;
         region.textContent = item.region;
 
