@@ -121,6 +121,14 @@ const getData = (locationValue) => {
   });
 };
 
+const getDataWithGPS = () => {
+  navigator.geolocation.getCurrentPosition((data) => {
+    const locationValue = `${data.coords.latitude},${data.coords.longitude}`;
+    document.querySelector(".weather").classList.add("hidden");
+    getData(locationValue);
+  });
+};
+
 const tempBtns = document.querySelectorAll('[class^="temp"]');
 tempBtns.forEach((item) =>
   item.addEventListener("click", (event) => {
@@ -133,15 +141,16 @@ tempBtns.forEach((item) =>
   })
 );
 
+document.querySelector(".gps").addEventListener("click", getDataWithGPS);
 document.querySelector(".submit").addEventListener("click", async (event) => {
   event.preventDefault();
-
   const input = document.querySelector("#location").value;
   if (input.length > 0) {
-    const weatherDiv = document.querySelector(".weather");
-    weatherDiv.classList.add("hidden");
+    document.querySelector(".weather").classList.add("hidden");
     getData(input);
   }
 });
 
-getData("Glasgow");
+navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
+  state === "granted" ? getDataWithGPS() : getData("Glasgow");
+});
