@@ -6,7 +6,6 @@ import windDirIcon from "./Wind Direction.svg";
 import loadingIcon from "./Spinner.svg";
 import DataController from "./DataController";
 
-const locationInput = document.querySelector("#location");
 const submitBtn = document.querySelector(".submit");
 const tempBtns = document.querySelectorAll('[class^="temp"]');
 let isCelsius = true;
@@ -128,6 +127,7 @@ const getData = (locationValue) => {
       render(data);
       document.querySelector(".error")?.remove();
       document.querySelector(".weather").classList.toggle("hidden");
+      document.querySelector("#location").value = "";
     } else {
       showError(data.error);
     }
@@ -137,7 +137,7 @@ const getData = (locationValue) => {
 submitBtn.addEventListener("click", async (event) => {
   event.preventDefault();
 
-  const input = locationInput.value;
+  const input = document.querySelector("#location").value;
   if (input.length > 0) {
     const weatherDiv = document.querySelector(".weather");
     weatherDiv.classList.add("hidden");
