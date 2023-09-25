@@ -6,8 +6,6 @@ import windDirIcon from "./Wind Direction.svg";
 import loadingIcon from "./Spinner.svg";
 import DataController from "./DataController";
 
-const submitBtn = document.querySelector(".submit");
-const tempBtns = document.querySelectorAll('[class^="temp"]');
 let isCelsius = true;
 let currentData;
 
@@ -87,6 +85,7 @@ const render = (data = currentData) => {
   data.hour.forEach(updateHour);
 };
 
+const tempBtns = document.querySelectorAll('[class^="temp"]');
 tempBtns.forEach((item) =>
   item.addEventListener("click", (event) => {
     const wasCelsius = isCelsius;
@@ -134,7 +133,7 @@ const getData = (locationValue) => {
   });
 };
 
-submitBtn.addEventListener("click", async (event) => {
+document.querySelector(".submit").addEventListener("click", async (event) => {
   event.preventDefault();
 
   const input = document.querySelector("#location").value;
