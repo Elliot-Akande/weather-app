@@ -2,25 +2,11 @@ const DataController = (() => {
   const fetchData = async (locationVal) => {
     const apiKey = "e1252673506548e2b9182745232209";
     const encLocation = encodeURI(locationVal);
-    try {
-      const response = await fetch(
-        `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${encLocation}`,
-        { mode: "cors" }
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      if (error.message.includes("403") || error.message.includes("401")) {
-        console.error(`Invalid API Key`);
-      } else {
-        console.error(`An error occurred: ${error.message}`);
-      }
-    }
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${encLocation}`,
+      { mode: "cors" }
+    );
+    return response.json();
   };
 
   const getWeatherDesc = (speed) => {
@@ -42,9 +28,14 @@ const DataController = (() => {
   };
 
   const getData = async (locationVal) => {
-    const { location, current, forecast } = await fetchData(locationVal);
+    const data = await fetchData(locationVal);
 
-    const data = {
+    if (Object.prototype.hasOwnProperty.call(data, "error")) {
+      return { error: data.error.code };
+    }
+
+    const { location, current, forecast } = data;
+    const formattedData = {
       location: location.name,
       country: location.country,
       date: location.localtime,
@@ -85,7 +76,7 @@ const DataController = (() => {
       }),
     };
 
-    return data;
+    return formattedData;
   };
 
   return {

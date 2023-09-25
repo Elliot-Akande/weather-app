@@ -99,24 +99,50 @@ tempBtns.forEach((item) =>
   })
 );
 
+const showError = (code) => {
+  document.querySelector(".error")?.remove();
+
+  const errDiv = document.createElement("div");
+  const err = document.createElement("div");
+  errDiv.classList.add("error");
+
+  if (code === 1006) err.textContent = "Location not found";
+  // else if (code === 1003) err.textContent = "Please enter a location";
+  else err.textContent = `WeatherAPI Error: Code ${code}`;
+
+  errDiv.appendChild(err);
+  document.querySelector("body").appendChild(errDiv);
+};
+
 const getData = (locationValue) => {
   const loadingDiv = document.createElement("div");
-  loadingDiv.classList.add("loading-container");
   const loading = svg(loadingIcon);
+
+  loadingDiv.classList.add("loading-container");
   loadingDiv.appendChild(loading);
   document.querySelector("body").appendChild(loadingDiv);
 
   DataController.getData(locationValue).then((data) => {
-    render(data);
     loadingDiv.remove();
-    document.querySelector(".weather").classList.toggle("hidden");
+    if (!Object.prototype.hasOwnProperty.call(data, "error")) {
+      render(data);
+      document.querySelector(".error")?.remove();
+      document.querySelector(".weather").classList.toggle("hidden");
+    } else {
+      showError(data.error);
+    }
   });
 };
 
 submitBtn.addEventListener("click", async (event) => {
   event.preventDefault();
-  document.querySelector(".weather").classList.toggle("hidden");
-  getData(locationInput.value);
+
+  const input = locationInput.value;
+  if (input.length > 0) {
+    const weatherDiv = document.querySelector(".weather");
+    weatherDiv.classList.add("hidden");
+    getData(input);
+  }
 });
 
 getData("Glasgow");
