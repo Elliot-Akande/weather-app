@@ -1,6 +1,6 @@
 const DataController = (() => {
+  const apiKey = "e1252673506548e2b9182745232209";
   const fetchData = async (locationVal) => {
-    const apiKey = "e1252673506548e2b9182745232209";
     const encLocation = encodeURI(locationVal);
     const response = await fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${encLocation}`,
@@ -79,8 +79,18 @@ const DataController = (() => {
     return formattedData;
   };
 
+  const autoComplete = async (text) => {
+    const encLocation = encodeURI(text);
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${encLocation}`,
+      { mode: "cors" }
+    );
+    return response.json();
+  };
+
   return {
     getData,
+    autoComplete,
   };
 })();
 
