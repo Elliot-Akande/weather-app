@@ -152,6 +152,7 @@ nav button {
 nav > form {
   padding-left: 10px;
   padding-right: 10px;
+  position: relative;
 
   display: flex;
   gap: 2px;
@@ -207,6 +208,31 @@ nav > form > button > svg {
 .buttons > *.active,
 .buttons > *:hover {
   border: 2px solid var(--colour-white-primary);
+}
+
+.autocomplete {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  transform: translateY(100%);
+  z-index: 200;
+
+  background: var(--colour-white-primary);
+}
+
+.autocomplete * {
+  color: var(--colour-black);
+}
+
+.autocomplete div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.autocomplete .name {
+  font-weight: 600;
 }
 
 /* Main Section */
