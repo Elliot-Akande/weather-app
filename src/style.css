@@ -341,3 +341,16 @@ nav > form > button > svg {
 .hidden {
   display: none;
 }
+
+.error {
+  display: flex;
+  justify-content: center;
+}
+
+.error > div {
+  padding: 8px 16px;
+
+  border-radius: 20px;
+  background: var(--colour-black);
+  font-weight: 600;
+}
