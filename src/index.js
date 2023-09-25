@@ -85,18 +85,6 @@ const render = (data = currentData) => {
   data.hour.forEach(updateHour);
 };
 
-const tempBtns = document.querySelectorAll('[class^="temp"]');
-tempBtns.forEach((item) =>
-  item.addEventListener("click", (event) => {
-    const wasCelsius = isCelsius;
-    isCelsius = event.currentTarget.classList.contains("temp-c");
-    if (wasCelsius !== isCelsius) {
-      tempBtns.forEach((elem) => elem.classList.toggle("active"));
-      render();
-    }
-  })
-);
-
 const showError = (code) => {
   document.querySelector(".error")?.remove();
 
@@ -132,6 +120,18 @@ const getData = (locationValue) => {
     }
   });
 };
+
+const tempBtns = document.querySelectorAll('[class^="temp"]');
+tempBtns.forEach((item) =>
+  item.addEventListener("click", (event) => {
+    const wasCelsius = isCelsius;
+    isCelsius = event.currentTarget.classList.contains("temp-c");
+    if (wasCelsius !== isCelsius) {
+      tempBtns.forEach((elem) => elem.classList.toggle("active"));
+      render();
+    }
+  })
+);
 
 document.querySelector(".submit").addEventListener("click", async (event) => {
   event.preventDefault();
