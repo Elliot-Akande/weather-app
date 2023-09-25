@@ -157,6 +157,7 @@ document.querySelector("#location").addEventListener("input", (event) => {
     DataController.autoComplete(input).then((data) => {
       const autocompleteDiv = document.querySelector(".autocomplete");
       autocompleteDiv.classList.remove("hidden");
+      autocompleteDiv.textContent = "";
 
       data.forEach((item) => {
         const container = document.createElement("div");
