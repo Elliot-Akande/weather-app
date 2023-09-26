@@ -195,6 +195,6 @@ document.querySelector("nav form").addEventListener("focusout", (event) => {
   }
 });
 
-navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
+navigator?.permissions?.query({ name: "geolocation" })?.then(({ state }) => {
   state === "granted" ? getDataWithGPS() : getData("Glasgow");
 });
