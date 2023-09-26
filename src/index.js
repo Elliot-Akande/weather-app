@@ -92,8 +92,11 @@ const showError = (code) => {
   const err = document.createElement("div");
   errDiv.classList.add("error");
 
-  if (code === 1006) err.textContent = "Location not found";
-  else err.textContent = `WeatherAPI Error: Code ${code}`;
+  if (code === 1006) {
+    err.textContent = "Location not found";
+  } else {
+    err.textContent = `WeatherAPI Error: Code ${code}`;
+  }
 
   errDiv.appendChild(err);
   document.querySelector("body").appendChild(errDiv);
@@ -195,6 +198,6 @@ document.querySelector("nav form").addEventListener("focusout", (event) => {
   }
 });
 
-navigator?.permissions?.query({ name: "geolocation" })?.then(({ state }) => {
+navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
   state === "granted" ? getDataWithGPS() : getData("Glasgow");
 });
