@@ -213,8 +213,8 @@ nav > form > button > svg {
 
 .autocomplete {
   position: absolute;
-  left: 0;
-  right: 0;
+  left: -2px;
+  right: -2px;
   bottom: -4px;
 
   transform: translateY(100%);
@@ -222,7 +222,7 @@ nav > form > button > svg {
   overflow: hidden;
 
   background: var(--colour-black);
-  border-radius: 18px;
+  border-radius: 19px;
 }
 
 .autocomplete * {
