@@ -160,6 +160,7 @@ document.querySelector("#location").addEventListener("input", (event) => {
       autocompleteDiv.classList.remove("hidden");
       autocompleteDiv.textContent = "";
 
+      data.sort((a, b) => a.name.localeCompare(b.name));
       data.forEach((item) => {
         const container = document.createElement("button");
         const nameDiv = document.createElement("div");
