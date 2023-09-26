@@ -113,7 +113,6 @@ const getData = (locationValue) => {
       render(data);
       document.querySelector(".error")?.remove();
       document.querySelector(".weather").classList.toggle("hidden");
-      document.querySelector(".autocomplete").classList.add("hidden");
       document.querySelector("#location").value = "";
       document.querySelector("#location").blur();
     } else {
@@ -148,6 +147,7 @@ document.querySelector(".submit").addEventListener("click", async (event) => {
   const input = document.querySelector("#location").value;
   if (input.length > 0) {
     document.querySelector(".weather").classList.add("hidden");
+    document.querySelector(".autocomplete").classList.add("hidden");
     getData(input);
   }
 });
@@ -179,6 +179,7 @@ document.querySelector("#location").addEventListener("input", (event) => {
         container.addEventListener("click", (e) => {
           e.preventDefault();
           document.querySelector(".weather").classList.add("hidden");
+          document.querySelector(".autocomplete").classList.add("hidden");
           getData(`${item.name} ${region}`);
         });
       });
