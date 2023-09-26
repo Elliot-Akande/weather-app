@@ -167,7 +167,7 @@ document.querySelector("#location").addEventListener("input", (event) => {
         name.classList.add("name");
         region.classList.add("region");
         name.textContent = item.name;
-        region.textContent = item.region;
+        region.textContent = item.region !== "" ? item.region : item.country;
 
         container.appendChild(name);
         container.appendChild(region);
