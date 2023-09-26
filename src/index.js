@@ -188,8 +188,10 @@ document.querySelector("#location").addEventListener("input", (event) => {
   }
 });
 
-document.querySelector("#location").addEventListener("focusout", () => {
-  document.querySelector(".autocomplete").classList.add("hidden");
+document.querySelector("nav form").addEventListener("focusout", (event) => {
+  if (!event.currentTarget.contains(event.relatedTarget)) {
+    document.querySelector(".autocomplete").classList.add("hidden");
+  }
 });
 
 navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
