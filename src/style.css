@@ -190,6 +190,7 @@ nav > form > button > svg {
   background: none;
   outline: none;
   border: none;
+  width: 290px;
 }
 
 #location::-webkit-search-cancel-button {
