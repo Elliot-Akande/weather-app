@@ -5,6 +5,7 @@
   --colour-white-secondary: #bae6fd;
 
   --colour-black: #0c4a6e;
+  --colour-black-light: hsl(202, 80%, 18%);
 
   --colour-warn-green: hsl(101, 47%, 54%);
   --colour-warn-yellow: hsl(42, 88%, 65%);
@@ -214,24 +215,44 @@ nav > form > button > svg {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: -4px;
 
   transform: translateY(100%);
   z-index: 200;
+  overflow: hidden;
 
-  background: var(--colour-white-primary);
+  background: var(--colour-black);
+  border-radius: 18px;
 }
 
 .autocomplete * {
-  color: var(--colour-black);
+  color: var(--colour-white-primary);
 }
 
-.autocomplete div {
+.autocomplete > button {
+  display: block;
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 26px 16px;
+  font-size: 16px;
 }
 
-.autocomplete .name {
+.autocomplete > button:hover,
+.autocomplete > button:focus {
+  background: var(--colour-black-light);
+}
+
+.autocomplete > button:not(:last-child) {
+  border-bottom: 1px solid var(--colour-white-secondary);
+}
+
+.autocomplete > button > .name {
   font-weight: 600;
 }
 
@@ -353,6 +374,7 @@ nav > form > button > svg {
 }
 
 .hour-wind-icon {
+  flex-shrink: 0;
   width: 32px;
 }
 
