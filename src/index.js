@@ -93,7 +93,6 @@ const showError = (code) => {
   errDiv.classList.add("error");
 
   if (code === 1006) err.textContent = "Location not found";
-  // else if (code === 1003) err.textContent = "Please enter a location";
   else err.textContent = `WeatherAPI Error: Code ${code}`;
 
   errDiv.appendChild(err);
@@ -115,6 +114,7 @@ const getData = (locationValue) => {
       document.querySelector(".error")?.remove();
       document.querySelector(".weather").classList.toggle("hidden");
       document.querySelector(".autocomplete").classList.add("hidden");
+      document.querySelector("#location").value = "";
       document.querySelector("#location").blur();
     } else {
       showError(data.error);
