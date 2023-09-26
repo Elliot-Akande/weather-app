@@ -27,16 +27,16 @@ const config = {
   ],
   module: {
     rules: [
-      // {
-      //   test: /\.(?:js|mjs|cjs)$/,
-      //   exclude: /node_modules/,
-      //   use: {
-      //     loader: "babel-loader",
-      //     options: {
-      //       presets: [["@babel/preset-env", { targets: "defaults" }]],
-      //     },
-      //   },
-      // },
+      {
+        test: /\.(?:js|mjs|cjs)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [["@babel/preset-env", { targets: "defaults" }]],
+          },
+        },
+      },
       {
         test: /\.svg$/,
         use: "svg-inline-loader",
