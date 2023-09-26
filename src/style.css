@@ -192,6 +192,14 @@ nav > form > button > svg {
   border: none;
 }
 
+#location::-webkit-search-cancel-button {
+  appearance: none;
+  position: relative;
+  right: -8px;
+  content: url(Close.png);
+  filter: invert(100%);
+}
+
 .buttons {
   text-align: end;
 }
