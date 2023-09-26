@@ -114,7 +114,8 @@ const getData = (locationValue) => {
       render(data);
       document.querySelector(".error")?.remove();
       document.querySelector(".weather").classList.toggle("hidden");
-      document.querySelector("#location").value = "";
+      document.querySelector(".autocomplete").classList.add("hidden");
+      document.querySelector("#location").blur();
     } else {
       showError(data.error);
     }
@@ -160,18 +161,25 @@ document.querySelector("#location").addEventListener("input", (event) => {
       autocompleteDiv.textContent = "";
 
       data.forEach((item) => {
-        const container = document.createElement("div");
-        const name = document.createElement("div");
-        const region = document.createElement("div");
+        const container = document.createElement("button");
+        const nameDiv = document.createElement("div");
+        const regionDiv = document.createElement("div");
+        const region = item.region !== "" ? item.region : item.country;
 
-        name.classList.add("name");
-        region.classList.add("region");
-        name.textContent = item.name;
-        region.textContent = item.region !== "" ? item.region : item.country;
+        nameDiv.classList.add("name");
+        regionDiv.classList.add("region");
+        nameDiv.textContent = item.name;
+        regionDiv.textContent = region;
 
-        container.appendChild(name);
-        container.appendChild(region);
+        container.appendChild(nameDiv);
+        container.appendChild(regionDiv);
         autocompleteDiv.appendChild(container);
+
+        container.addEventListener("click", (e) => {
+          e.preventDefault();
+          document.querySelector(".weather").classList.add("hidden");
+          getData(`${item.name} ${region}`);
+        });
       });
     });
   }
