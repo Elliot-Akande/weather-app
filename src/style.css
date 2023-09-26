@@ -172,7 +172,6 @@ nav > form:focus-within {
   background: none;
   outline: none;
   border: none;
-  width: 300px;
   font-weight: 600;
   font-size: 18px;
 }
@@ -420,109 +419,105 @@ nav > form > button > svg {
 
 /* Responsive layout */
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 660px) {
   /* Nav Section */
 
   body {
-    padding: 70px 50px;
-    width: 100vw;
+    padding: 20px;
   }
 
   nav {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 10px;
+    padding-bottom: 24px;
   }
 
   .logo {
-    font-size: 80px;
-    padding-bottom: 20px;
+    font-size: 40px;
+    padding-bottom: 10px;
   }
 
   .logo > svg {
-    height: 106px;
-    width: 106px;
-    margin-right: 11px;
-    transform: rotate(20deg);
+    height: 58px;
+    width: 58px;
+    margin-right: 6px;
   }
 
   .logo-text > div:nth-child(2) {
-    font-size: 40px;
-    margin-top: -18px;
+    font-size: 24px;
+    margin-top: -12px;
   }
 
-  nav button {
-    height: 90px;
+  nav form {
+    height: 40px;
   }
 
   nav > form {
-    padding-left: 30px;
-    padding-right: 30px;
-    gap: 12px;
-    border-radius: 100px;
-    border: 4px solid var(--colour-black);
-  }
-
-  nav > form:focus-within {
-    border: 4px solid var(--colour-white-primary);
+    padding-left: 8px;
+    padding-right: 8px;
+    gap: 4px;
   }
 
   #location {
-    height: 100px;
-    width: 60vw;
-    font-size: 44px;
-  }
-
-  nav > form > button {
-    height: 64px;
-    width: 64px;
-  }
-
-  nav > form > button > svg {
-    height: 64px;
-    width: 64px;
+    font-size: 19px;
+    width: 62vw;
   }
 
   #location::-webkit-search-cancel-button {
-    right: -10px;
-    height: 60px;
-    width: 60px;
+    right: -6px;
+    height: 24px;
+    width: 24px;
+  }
+
+  nav > form > button {
+    height: 24px;
+    width: 24px;
+  }
+
+  nav > form > button > svg {
+    height: 24px;
+    width: 24px;
   }
 
   .buttons {
     justify-content: center;
-    gap: 20px;
+    gap: 8px;
   }
 
   .buttons > * {
-    border: 4px solid var(--colour-black);
-    border-radius: 100px;
-    padding: 0 50px;
-    font-size: 40px;
+    border: 2px solid var(--colour-black);
+    padding: 0 18px;
+    font-size: 18px;
+    height: 34px;
   }
 
   .buttons > *.active,
   .buttons > *:hover {
-    border: 4px solid var(--colour-white-primary);
+    border: 2px solid var(--colour-white-primary);
   }
 
   .autocomplete {
-    left: -4px;
-    right: -4px;
-    bottom: -10px;
-    border-radius: 47px;
+    left: -2px;
+    right: -2px;
+    bottom: -4px;
+    border-radius: 20px;
   }
 
   .autocomplete > button {
-    padding: 64px 32px;
-    font-size: 40px;
+    padding: 30x 8px;
+    font-size: 15px;
   }
 
   .autocomplete > button:not(:last-child) {
-    border-bottom: 4px solid var(--colour-white-secondary);
+    border-bottom: 2px solid var(--colour-white-secondary);
   }
 
   /* Main Section */
+
+  .title-container {
+    padding-bottom: 20px;
+  }
 
   .main-weather {
     flex-direction: column;
@@ -531,11 +526,23 @@ nav > form > button > svg {
   .main-left {
     flex-direction: row;
     gap: 4px;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
   }
 
   .pad-b-xxs {
+    padding-bottom: 2px;
+  }
+
+  .pad-b-xs {
+    padding-bottom: 2px;
+  }
+
+  .pad-b-s {
     padding-bottom: 6px;
+  }
+
+  .pad-b-l {
+    padding-bottom: 30px;
   }
 
   .pad-l-m {
@@ -543,39 +550,42 @@ nav > form > button > svg {
   }
 
   h1 {
-    font-size: 84px;
+    font-size: 40px;
   }
 
   h2 {
-    font-size: 74px;
+    font-size: 30px;
   }
 
   h3 {
-    font-size: 64px;
+    font-size: 22px;
     text-align: center;
   }
 
   h4 {
-    font-size: 30px;
+    font-size: 18px;
+    font-weight: 500;
   }
 
   h5 {
-    font-size: 46px;
+    font-size: 16px;
     text-align: center;
+    font-weight: 500;
   }
 
   h6 {
-    font-size: 40px;
+    font-size: 16px;
+    font-weight: 500;
   }
 
   .main-icon {
-    height: 190px;
-    width: 190px;
+    height: 90px;
+    width: 90px;
   }
 
   .main-temp {
-    font-size: 180px;
-    padding-left: 10px;
+    font-size: 70px;
+    padding-left: 0px;
   }
 
   .main-left {
@@ -588,13 +598,17 @@ nav > form > button > svg {
   }
 
   .current-details {
-    grid-template-columns: repeat(3, 240px);
-    column-gap: 60px;
-    row-gap: 60px;
+    grid-template-columns: repeat(3, 100px);
+    column-gap: 10px;
+    row-gap: 22px;
+  }
+
+  .current-item:first-child .wind-today {
+    height: 26px;
   }
 
   .current-item {
-    gap: 10px;
+    gap: 4px;
   }
 
   .wind-today {
@@ -604,45 +618,45 @@ nav > form > button > svg {
   }
 
   .wind-today > svg {
-    width: 80px;
+    width: 34px;
   }
 
   .uv {
-    height: 84px;
-    width: 84px;
+    height: 36px;
+    width: 36px;
     border-radius: 100px;
   }
 
   .moon-icon > svg {
-    height: 94px;
+    height: 44px;
   }
 
   /* Hour Section */
 
   .hourly-container {
     width: 100%;
-    padding: 50px 40px 10px;
-    border-radius: 50px;
-    margin-bottom: 60px;
+    padding: 10px 10px 10px;
+    border-radius: 20px;
+    margin-bottom: 40px;
   }
 
   .hourly-container > div:not(:last-child) {
-    border-bottom: 4px solid var(--colour-white-secondary);
+    border-bottom: 2px solid var(--colour-white-secondary);
   }
 
   .hourly-container > div {
-    gap: 40px;
-    padding: 26px 0;
-    padding-right: 20px;
+    gap: 5vw;
+    padding: 4px 0;
+    padding-right: 10px;
   }
 
   .time {
-    width: 100px;
-    font-size: 38px;
+    width: 60px;
+    font-size: 16px;
   }
 
   .hour-temp {
-    font-size: 50px;
+    font-size: 20px;
   }
 
   .hour-desc {
@@ -650,7 +664,7 @@ nav > form > button > svg {
   }
 
   .hour-icon > img {
-    width: 90px;
+    width: 42px;
   }
 
   .hour-wind-container {
@@ -666,12 +680,12 @@ nav > form > button > svg {
 
   .hour-feels,
   .hour-wind {
-    font-size: 36px;
+    font-size: 14px;
   }
 
   .hour-wind-icon {
     flex-shrink: 0;
-    width: 70px;
+    width: 28px;
   }
 
   /* Loading Section */
@@ -680,24 +694,24 @@ nav > form > button > svg {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: 120px;
   }
 
   .loading-container > svg {
-    width: 140px;
+    width: 80px;
   }
 
   /* Error Section */
 
   .error > div {
-    padding: 18px 36px;
+    padding: 7px 14px;
 
     border-radius: 90px;
-    font-size: 48px;
+    font-size: 18px;
   }
 }
 
-@media only screen and (max-width: 960px) and (min-width: 501px) {
+@media only screen and (max-width: 960px) and (min-width: 661px) {
   nav {
     display: flex;
     flex-direction: column;
