@@ -1,6 +1,6 @@
 # Umbrella Weather
 
-Umbrella Weather provides users with real-time weather information for a specified location, also offering an hour-by-hour breakdown of the weather forecast for the day. The website fetches weather data from [weatherapi.com](https://www.weatherapi.com) and provides various features, including a search bar with autocomplete functionality, location-based weather retrieval using GPS coordinates, and responsive design for both mobile and desktop devices.
+Umbrella Weather provides users with real-time weather information for a specified location, offering an hour-by-hour breakdown of the daily forecast. The website fetches weather data from [weatherapi.com](https://www.weatherapi.com) and provides various features, including a search bar with autocomplete functionality, location-based weather retrieval using GPS coordinates, and responsive design for both mobile and desktop devices.
 
 _This project was created to practice the follwing:_
 
