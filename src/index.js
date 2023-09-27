@@ -198,6 +198,14 @@ document.querySelector("nav form").addEventListener("focusout", (event) => {
   }
 });
 
-navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
-  state === "granted" ? getDataWithGPS() : getData("Glasgow");
-});
+if (
+  window.navigator &&
+  window.navigator.permissions &&
+  window.navigator.permissions.query
+) {
+  navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
+    state === "granted" ? getDataWithGPS() : getData("Glasgow");
+  });
+} else {
+  getData("Glasgow");
+}
